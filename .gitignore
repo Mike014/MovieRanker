@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual Environment
+venv/
+.env/
+
+# Django
+db.sqlite3
+*.log
+*.pot
+*.mo
+
+# Secrets
+*.env
+*.secret
+
+# macOS
+.DS_Store
+
+# IDEs and editors
+.idea/
+*.sublime-workspace
+*.sublime-project
+.vscode/
+*.bak
+
+# Executables
+*.exe
+*.bin
+*.dll
+
+
