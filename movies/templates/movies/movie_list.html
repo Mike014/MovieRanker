@@ -1,38 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movie Ranker</title>
-</head>
-<body>
-    <h1>Top Movies</h1>
+<!-- Recap: This file is used to define the HTML template for displaying the list of movies by genre.
+     The template will display a dropdown to select a genre and a list of movies for the selected genre.
+     Each movie title will be a link to the movie details page.
+     Changes: 31/12/2024
+     In this file, we define the HTML structure for displaying the list of movies by genre.
+     The dropdown will allow the user to select a genre.
+     The list of movies will display the title, rating, and release date of each movie.
+     The title of each movie will be a link to the movie details page. -->
 
-    <!-- Form for select the genre -->
-    <form method="get" action="{% url 'movie_list' %}">
-        <label for="genre">Choose a genre:</label>
-        <select name="genre_id" id="genre">
-            {% for genre in genres %}
-                <option value="{{ genre.id }}" {% if genre.id == selected_genre_id %}selected{% endif %}>
-                    {{ genre.name }}
-                </option>
-            {% endfor %}
-        </select>
-        <button type="submit">Filter</button>
-    </form>
+<h1>Movies by Genre</h1>
 
-    <!-- Show the movie filtered -->
-    <ul>
-        {% if movies %}
-            {% for movie in movies %}
-                <li>
-                    <strong>{{ movie.title }}</strong> (Genre ID: {{ movie.genre }}) - Rating: {{ movie.rating }}
-                </li>
-            {% endfor %}
-        {% else %}
-            <p>No movies found for the selected genre.</p>
-        {% endif %}
-    </ul>
-</body>
-</html>
+<form method="get" action="{% url 'movie_list' %}">
+    <label for="genre">Select Genre:</label>
+    <select name="genre_id" id="genre" onchange="this.form.submit()">
+        <option value="">--Select Genre--</option>
+        {% for genre in genres %}
+            <option value="{{ genre.id }}" {% if genre.id == selected_genre_id %}selected{% endif %}>
+                {{ genre.name }}
+            </option>
+        {% endfor %}
+    </select>
+</form>
+
+<ul>
+    {% for movie in movies %}
+        <li>
+            <h2><a href="{% url 'movie_details' movie.id %}">{{ movie.title }}</a></h2>
+            <p>Rating: {{ movie.rating }}</p>
+            <p>Release Date: {{ movie.release_date }}</p>
+        </li>
+    {% empty %}
+        <p>No movies found for the selected genre.</p>
+    {% endfor %}
+</ul>
 
