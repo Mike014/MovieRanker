@@ -1,4 +1,4 @@
-# Movie Ranker Prototype
+# Movie Ranker Prototype [![Sponsor](https://img.shields.io/badge/Sponsor%20Me!-blue?style=for-the-badge)](https://github.com/sponsors/Mike014)
 
 **Movie Ranker** is a prototype web application written in Django. This app is an early-stage project and is not yet deployed. Its primary goal is to serve as a dynamic movie recommendation app, designed to help users find movies to watch, tailored to their preferences.
 
