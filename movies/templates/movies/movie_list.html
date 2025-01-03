@@ -23,19 +23,19 @@
 
     <!-- Show the filtered movies -->
     <ul>
-        {% if movies %}
-            {% for movie in movies %}
-                <li>
-                    <strong>{{ movie.title }}</strong> (Genre: {{ movie.genre }}) - Rating: {{ movie.rating }}
-                    <!-- Show the movie affiliate link -->
-                    {% if movie.affiliate_link %}
-                        <a href="{{ movie.affiliate_link }}" target="_blank">Watch Now</a>
-                    {% endif %}
-                </li>
-            {% endfor %}
-        {% else %}
+        {% for movie in movies %}
+            <li>
+                <h2><a href="{% url 'movie_details' movie.id %}">{{ movie.title }}</a></h2>
+                <p>Rating: {{ movie.rating }}</p>
+                <p>Release Date: {{ movie.release_date }}</p>
+                <!-- Show the movie affiliate link -->
+                {% if movie.affiliate_link %}
+                    <a href="{{ movie.affiliate_link }}" target="_blank">Watch Now</a>
+                {% endif %}
+            </li>
+        {% empty %}
             <p>No movies found for the selected genre.</p>
-        {% endif %}
+        {% endfor %}
     </ul>
 
     <!-- Sponsored movies --> 

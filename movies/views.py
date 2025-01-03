@@ -1,5 +1,5 @@
-from django.shortcuts import render, redirect
-from .api import get_movie_lists, get_genre_lists
+from django.shortcuts import render, redirect, get_object_or_404
+from .api import get_movie_lists, get_genre_lists, get_movie_details
 from .models import Movie
 
 def movie_list(request):
@@ -14,6 +14,7 @@ def movie_list(request):
         if movies_data:
             for data in movies_data:
                 movie = Movie(
+                    id=data.get('id'),  # Ensure the movie ID is set
                     title=data.get('title'),
                     genre=selected_genre_id,
                     rating=data.get('vote_average'),
@@ -44,6 +45,7 @@ def home_view(request):
         if movies_data:
             for data in movies_data:
                 movie = Movie(
+                    id=data.get('id'),  # Ensure the movie ID is set
                     title=data.get('title'),
                     genre=selected_genre_id,
                     rating=data.get('vote_average'),
@@ -72,6 +74,21 @@ def subscribe(request):
     if request.method == 'POST':
         return redirect('user_profile')
     return render(request, 'movies/subscribe.html')
+
+def movie_details(request, movie_id):
+    movie = get_movie_details(movie_id)
+    if not movie:
+        return render(request, 'movies/error.html', {
+            'message': 'Could not fetch movie details. Please try again later.'
+        })
+
+    return render(request, 'movies/movie_details.html', {
+        'title': movie.get('title'),
+        'overview': movie.get('overview'),
+        'release_date': movie.get('release_date'),
+        'rating': movie.get('vote_average'),
+        'affiliate_link': movie.get('affiliate_link')
+    })
 # Recap: 
 # This file contains the view functions for the Movie Ranker application. It includes:
 

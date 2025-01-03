@@ -1,3 +1,14 @@
+# Recap: This file is used to define functions that interact with The Movie Database API.
+# The functions in this file are used to get the genre list, the list of movies for a specific genre, and the details of a specific movie.
+# The get_genre_lists() function is used to get the genre list. It takes the API key and language as arguments.
+# The get_movie_lists() function is used to get the list of movies for a specific genre. It takes the genre ID, API key, language, sorting, page, and minimum number of votes as arguments.
+# The get_movie_details() function is used to get the details of a specific movie. It takes the movie ID, API key, and language as arguments.
+# Changes: 31/12/2024
+# In this file, we define three functions: one to get the genre list, one to get the list of movies for a specific genre, and one to get the details of a specific movie.
+# The get_genre_lists() function will return a list of genres.
+# The get_movie_lists() function will return a list of movies for a specific genre.
+# The get_movie_details() function will return the details of a specific movie.
+
 import os
 from dotenv import load_dotenv
 import requests
@@ -38,6 +49,20 @@ def get_movie_lists(genre_id):
     else:
         print(f"Error fetching movies: {response.status_code}")
         return []
+
+# Function to get the details of a specific movie
+def get_movie_details(movie_id):
+    url = f"https://api.themoviedb.org/3/movie/{movie_id}"
+    params = {
+        'api_key': TMDB_API_KEY,
+        'language': 'en-US'
+    }
+    response = requests.get(url, params=params)
+    if response.status_code == 200:
+        return response.json()
+    else:
+        print(f"Error fetching movie details: {response.status_code}")
+        return {}
 
 # Example usage
 # if __name__ == "__main__":
