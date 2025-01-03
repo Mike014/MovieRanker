@@ -1,4 +1,4 @@
-# Recap of Files and New Features in `monetization_features` Branch
+# Recap of Files and New Features in `linking_movies_to` Branch
 
 ## urls.py
 This file defines the URL patterns for the Movie Ranker application. It includes:
@@ -66,6 +66,7 @@ This file contains the view functions for the Movie Ranker application. It inclu
 
 New Features:
 - Added view functions to handle premium subscription and display sponsored movies.
+- Integrated JustWatch API to fetch streaming links for movies.
 
 ## api.py
 This file is used to define functions that interact with The Movie Database API. It includes:
@@ -75,6 +76,7 @@ This file is used to define functions that interact with The Movie Database API.
 
 New Features:
 - Integrated TMDB API to fetch movie details and affiliate links.
+- Integrated JustWatch API to fetch streaming links for movies.
 
 ## models.py
 This file is used to define the models for the movie app. It includes:
@@ -85,15 +87,16 @@ New Features:
 - Added `affiliate_link` field to the `Movie` model.
 - Added `is_sponsored` field to the `Movie` model to indicate sponsored movies.
 
-## Summary of New Features in `monetization_features` Branch
+## Summary of New Features in `linking_movies_to` Branch
 - **Affiliate Marketing**: Added affiliate links for movies.
 - **Premium Subscription**: Added premium subscription functionality.
 - **Advertisements**: Added dynamic ad banners based on the selected genre.
 - **Sponsorships**: Added a section for sponsored movies.
+- **JustWatch Integration**: Added integration with JustWatch API to fetch streaming links for movies.
 
 
 ## ITALIAN 
-# Riepilogo dei file e delle nuove funzionalità nel branch `monetization_features`
+# Riepilogo dei file e delle nuove funzionalità nel branch `linking_movies_to`
 
 ## urls.py
 Questo file definisce i pattern URL per l'applicazione Movie Ranker. Include:
@@ -161,6 +164,7 @@ Questo file contiene le funzioni di vista per l'applicazione Movie Ranker. Inclu
 
 Nuove funzionalità:
 - Aggiunte funzioni di vista per gestire l'abbonamento premium e visualizzare i film sponsorizzati.
+- Integrata l'API JustWatch per ottenere i link di streaming per i film.
 
 ## api.py
 Questo file è utilizzato per definire le funzioni che interagiscono con l'API di The Movie Database. Include:
@@ -170,6 +174,7 @@ Questo file è utilizzato per definire le funzioni che interagiscono con l'API d
 
 Nuove funzionalità:
 - Integrata l'API TMDB per ottenere i dettagli dei film e i link affiliati.
+- Integrata l'API JustWatch per ottenere i link di streaming per i film.
 
 ## models.py
 Questo file è utilizzato per definire i modelli per l'applicazione dei film. Include:
@@ -180,8 +185,9 @@ Nuove funzionalità:
 - Aggiunto il campo `affiliate_link` al modello `Movie`.
 - Aggiunto il campo `is_sponsored` al modello `Movie` per indicare i film sponsorizzati.
 
-## Riepilogo delle nuove funzionalità nel branch `monetization_features`
+## Riepilogo delle nuove funzionalità nel branch `linking_movies_to`
 - **Affiliate Marketing**: Aggiunti link affiliati per i film.
 - **Premium Subscription**: Aggiunta funzionalità di abbonamento premium.
 - **Advertisements**: Aggiunti banner pubblicitari dinamici in base al genere selezionato.
 - **Sponsorships**: Aggiunta una sezione per i film sponsorizzati.
+- **Integrazione con JustWatch**: Aggiunta integrazione con l'API JustWatch per ottenere i link di streaming per i film.
