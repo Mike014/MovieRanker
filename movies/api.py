@@ -12,11 +12,19 @@
 import os
 from dotenv import load_dotenv
 import requests
+# from justwatch import JustWatch
 
 load_dotenv()
 
+JUSTWATCH_API_URL = "https://apis.justwatch.com/content/titles/en_US/popular"
+
 # API key for The Movie Database
 TMDB_API_KEY = os.getenv('TMDB_API_KEY')
+
+if not TMDB_API_KEY:
+    raise ValueError("TMDB_API_KEY not found in environment variables.")
+else:
+    print("TMDB_API_KEY loaded successfully.")
 
 # Function to get the genre list
 def get_genre_lists():
@@ -27,7 +35,12 @@ def get_genre_lists():
     }
     response = requests.get(url, params=params)
     if response.status_code == 200:
-        return response.json().get('genres', [])
+        genres = response.json().get('genres', [])
+        if not genres:
+            print("Debug: No genres received from TMDB API.")
+        else:
+            print(f"Debug: Received genres from TMDB API: {genres}")
+        return genres
     else:
         print(f"Error fetching genres: {response.status_code}")
         return []
@@ -36,12 +49,12 @@ def get_genre_lists():
 def get_movie_lists(genre_id):
     url = "https://api.themoviedb.org/3/discover/movie"
     params = {
-        'with_genres': genre_id,  # Pass the genre ID here
+        'with_genres': genre_id,
         'api_key': TMDB_API_KEY,
         'language': 'en-US',
-        'sort_by': 'vote_average.desc',  # Sort by highest rating
+        'sort_by': 'vote_average.desc',
         'page': 1,
-        'vote_count.gte': 50,  # Filter by minimum number of votes
+        'vote_count.gte': 50,
     }
     response = requests.get(url, params=params)
     if response.status_code == 200:
@@ -63,6 +76,23 @@ def get_movie_details(movie_id):
     else:
         print(f"Error fetching movie details: {response.status_code}")
         return {}
+
+# Function to get JustWatch links for a movie
+def get_justwatch_links(movie_title):
+    url = "https://apis.justwatch.com/content/titles/en_US/popular"
+    params = {
+        'query': movie_title
+    }
+    response = requests.get(url, params=params)
+    if response.status_code == 200:
+        results = response.json().get('items', [])
+        if results:
+            # Assuming the first result is the most relevant
+            movie = results[0]
+            streaming_info = movie.get('offers', [])
+            links = [offer.get('urls', {}).get('standard_web') for offer in streaming_info if offer.get('urls')]
+            return links
+    return []
 
 # Example usage
 # if __name__ == "__main__":

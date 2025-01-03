@@ -20,6 +20,14 @@
     <p><strong>Rating:</strong> {{ rating }}</p>
     <p><strong>Genres:</strong> {{ genres|join:", " }}</p>
     
+    <!-- JustWatch Links -->
+    <h2>Watch Now</h2>
+    <ul>
+        {% for link in justwatch_links %}
+            <li><a href="{{ link }}" target="_blank">Watch on JustWatch</a></li>
+        {% endfor %}
+    </ul>
+    
     <a href="{% url 'movie_list' %}">Back to Movie List</a>
 </body>
 </html>

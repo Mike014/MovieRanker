@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .api import get_movie_lists, get_genre_lists, get_movie_details
+from .api import get_movie_lists, get_genre_lists, get_movie_details, get_justwatch_links
 from .models import Movie
 
 def movie_list(request):
@@ -14,7 +14,7 @@ def movie_list(request):
         if movies_data:
             for data in movies_data:
                 movie = Movie(
-                    id=data.get('id'),  # Ensure the movie ID is set
+                    id=data.get('id'),
                     title=data.get('title'),
                     genre=selected_genre_id,
                     rating=data.get('vote_average'),
@@ -45,7 +45,7 @@ def home_view(request):
         if movies_data:
             for data in movies_data:
                 movie = Movie(
-                    id=data.get('id'),  # Ensure the movie ID is set
+                    id=data.get('id'),
                     title=data.get('title'),
                     genre=selected_genre_id,
                     rating=data.get('vote_average'),
@@ -64,7 +64,8 @@ def home_view(request):
         'movies': movies,
         'genres': genres,
         'selected_genre_id': selected_genre_id,
-        'sponsored_movies': sponsored_movies
+        'sponsored_movies': sponsored_movies,
+        'debug_message': "No genres received from TMDB API." if not genres else ""
     })
 
 def user_profile(request):
@@ -78,16 +79,22 @@ def subscribe(request):
 def movie_details(request, movie_id):
     movie = get_movie_details(movie_id)
     if not movie:
-        return render(request, 'movies/error.html', {
-            'message': 'Could not fetch movie details. Please try again later.'
-        })
+        print("Debug: No movie details received.")
+        return redirect('home')
+    justwatch_links = get_justwatch_links(movie.get('title'))
+    if not justwatch_links:
+        print("Debug: No JustWatch links received.")
+
+    genres = [genre['name'] for genre in movie.get('genres', [])]
 
     return render(request, 'movies/movie_details.html', {
         'title': movie.get('title'),
         'overview': movie.get('overview'),
         'release_date': movie.get('release_date'),
         'rating': movie.get('vote_average'),
-        'affiliate_link': movie.get('affiliate_link')
+        'affiliate_link': movie.get('affiliate_link'),
+        'justwatch_links': justwatch_links,
+        'genres': genres
     })
 # Recap: 
 # This file contains the view functions for the Movie Ranker application. It includes:

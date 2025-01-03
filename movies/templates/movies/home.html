@@ -30,6 +30,11 @@
         <button type="submit">Filter</button>
     </form>
 
+    <!-- Debug message for genres -->
+    {% if debug_message %}
+        <p>{{ debug_message }}</p>
+    {% endif %}
+
     <!-- Show the filtered movies -->
     <ul>
         {% for movie in movies %}

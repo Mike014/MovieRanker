@@ -3,7 +3,6 @@ from . import views
 
 urlpatterns = []
 
-# Check if the views exist before adding them to urlpatterns
 if hasattr(views, 'home_view'):
     urlpatterns.append(path('', views.home_view, name='home'))
 else:
@@ -28,10 +27,3 @@ if hasattr(views, 'movie_details'):
     urlpatterns.append(path('movies/<int:movie_id>/', views.movie_details, name='movie_details'))
 else:
     print("Warning: 'movie_details' does not exist in views.")
-
-# Recap:
-# The main movie list view (movie_list).
-# The home view (home).
-# The user profile view (user_profile).
-# The subscription view (subscribe).
-# The movie details view (movie_details).
