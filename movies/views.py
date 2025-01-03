@@ -81,6 +81,7 @@ def movie_details(request, movie_id):
     if not movie:
         print("Debug: No movie details received.")
         return redirect('home')
+        
     justwatch_links = get_justwatch_links(movie.get('title'))
     if not justwatch_links:
         print("Debug: No JustWatch links received.")
