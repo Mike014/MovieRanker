@@ -90,3 +90,98 @@ New Features:
 - **Premium Subscription**: Added premium subscription functionality.
 - **Advertisements**: Added dynamic ad banners based on the selected genre.
 - **Sponsorships**: Added a section for sponsored movies.
+
+
+## ITALIAN 
+# Riepilogo dei file e delle nuove funzionalità nel branch `monetization_features`
+
+## urls.py
+Questo file definisce i pattern URL per l'applicazione Movie Ranker. Include:
+- La vista principale della lista dei film (`movie_list`).
+- La vista home (`home`).
+- La vista del profilo utente (`user_profile`).
+- La vista di sottoscrizione (`subscribe`).
+- La vista dei dettagli del film (`movie_details`).
+
+Nuove funzionalità:
+- Aggiunti pattern URL per le nuove viste relative alle funzionalità di monetizzazione.
+
+## movie_list.html
+Questo file HTML rappresenta la pagina principale per la visualizzazione dei film filtrati per genere. Include:
+- Un modulo per selezionare il genere.
+- Una lista di film filtrati.
+- Una sezione per i film sponsorizzati.
+- Un banner pubblicitario che cambia in base al genere selezionato.
+- Se non ci sono film per il genere selezionato, viene visualizzato un messaggio appropriato.
+
+Nuove funzionalità:
+- Aggiunti link affiliati per i film.
+- Aggiunta una sezione per i film sponsorizzati.
+- Aggiunti banner pubblicitari dinamici in base al genere selezionato.
+
+## user_profile.html
+Questo file HTML rappresenta la pagina del profilo utente per l'applicazione Movie Ranker. Include:
+- Un messaggio di benvenuto che visualizza il nome utente dell'utente loggato.
+- Una sezione che promuove l'abbonamento premium.
+- Un modulo che consente all'utente di sottoscrivere il servizio premium.
+
+Nuove funzionalità:
+- Aggiunta una sezione per l'abbonamento premium.
+- Aggiunto un modulo per gestire l'abbonamento premium.
+
+## home.html
+Questo file HTML rappresenta la pagina home per l'applicazione Movie Ranker. Include:
+- Link di navigazione verso altre pagine.
+- Un modulo per selezionare il genere.
+- Una lista di film filtrati.
+- Una sezione per i film sponsorizzati.
+- Un banner pubblicitario che cambia in base al genere selezionato.
+
+Nuove funzionalità:
+- Aggiunti link di navigazione verso le pagine del profilo utente e della sottoscrizione.
+- Aggiunti link affiliati per i film.
+- Aggiunta una sezione per i film sponsorizzati.
+- Aggiunti banner pubblicitari dinamici in base al genere selezionato.
+
+## subscribe.html
+Questo file HTML rappresenta la pagina di sottoscrizione per l'applicazione Movie Ranker. Include:
+- Una sezione che promuove l'abbonamento premium.
+- Un modulo che consente all'utente di sottoscrivere il servizio premium.
+
+Nuove funzionalità:
+- Aggiunto un modulo per gestire l'abbonamento premium.
+
+## views.py
+Questo file contiene le funzioni di vista per l'applicazione Movie Ranker. Include:
+- `movie_list`: Visualizza una lista di film filtrati per genere. Limita i risultati a 5 per gli utenti non autenticati.
+- `home_view`: Visualizza la pagina home con i film sponsorizzati.
+- `user_profile`: Visualizza la pagina del profilo utente.
+- `subscribe`: Gestisce il processo di sottoscrizione e reindirizza alla pagina del profilo utente dopo una sottoscrizione avvenuta con successo.
+- `movie_details`: Visualizza i dettagli di un film specifico.
+
+Nuove funzionalità:
+- Aggiunte funzioni di vista per gestire l'abbonamento premium e visualizzare i film sponsorizzati.
+
+## api.py
+Questo file è utilizzato per definire le funzioni che interagiscono con l'API di The Movie Database. Include:
+- Funzioni per ottenere la lista dei generi.
+- Funzioni per ottenere la lista dei film per un genere specifico.
+- Funzioni per ottenere i dettagli di un film specifico.
+
+Nuove funzionalità:
+- Integrata l'API TMDB per ottenere i dettagli dei film e i link affiliati.
+
+## models.py
+Questo file è utilizzato per definire i modelli per l'applicazione dei film. Include:
+- Il modello `Movie` per rappresentare un film nel database.
+- Campi per il titolo, il genere, la valutazione, la descrizione e la data di rilascio del film.
+
+Nuove funzionalità:
+- Aggiunto il campo `affiliate_link` al modello `Movie`.
+- Aggiunto il campo `is_sponsored` al modello `Movie` per indicare i film sponsorizzati.
+
+## Riepilogo delle nuove funzionalità nel branch `monetization_features`
+- **Affiliate Marketing**: Aggiunti link affiliati per i film.
+- **Premium Subscription**: Aggiunta funzionalità di abbonamento premium.
+- **Advertisements**: Aggiunti banner pubblicitari dinamici in base al genere selezionato.
+- **Sponsorships**: Aggiunta una sezione per i film sponsorizzati.
