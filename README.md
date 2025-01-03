@@ -1,73 +1,38 @@
-# Movie Ranker Prototype
+# Recap of Files and New Features in `linking_movies_to` Branch
 
-**Movie Ranker** is a prototype web application written in Django. This app is an early-stage project and is not yet deployed. Its primary goal is to serve as a dynamic movie recommendation app, designed to help users find movies to watch, tailored to their preferences.
+## urls.py
+This file defines the URL patterns for the Movie Ranker application. It includes:
+- The main movie list view (`movie_list`).
+- The movie details view (`movie_details`).
 
-## Overview
+New Features:
+- Added URL patterns for the overwiew of the films.
 
-Currently, the app connects to The Movie Database (TMDB) API to fetch movie data and display it in a user-friendly interface. While it includes only basic features, its potential lies in evolving into a sophisticated tool for discovering movies based on genres, ranks, and similarities.
+## movie_list.html
+This HTML file represents the main page for viewing movies filtered by genre. It includes:
+- A form for selecting the genre.
+- A list of filtered movies.
+- A section for sponsored movies.
+- An ad banner that changes based on the selected genre.
+- If there are no movies for the selected genre, an appropriate message is displayed.
 
-### Features
+## movie_details.html
+This HTML file who overwiew the movie choosen.
 
-- **Integration with TMDB API**: The app fetches movie genres, ranks, and other details using TMDB API endpoints.
-- **Genre Filtering**: Users can filter movies by selecting genres from a dropdown menu.
-- **Dynamic Movie List**: Displays a ranked list of movies based on the selected genre.
+## views.py
+This file contains the view functions for the Movie Ranker application. It includes:
+- `movie_list`: Displays a list of movies filtered by genre. Limits results to 5 for unauthenticated users.
+- `movie_details`: Displays the details of a specific movie.
 
----
+## api.py
+This file is used to define functions that interact with The Movie Database API. It includes:
+- Functions to get the genre list.
+- Functions to get the list of movies for a specific genre.
+- Functions to get the details of a specific movie.
 
-## Key Components
+## models.py
+This file is used to define the models for the movie app. It includes:
+- The `Movie` model to represent a movie in the database.
+- Fields for the title, genre, rating, overview, and release date of the movie.
 
-### 1. **`api.py`**
-- Acts as the bridge between the application and TMDB API.
-- Contains functions to fetch genres, movies by genre, and other movie details.
-- Example endpoint usage:  
-  - Fetch genres: `https://api.themoviedb.org/3/genre/movie/list`
-  - Fetch movies by genre: `https://api.themoviedb.org/3/discover/movie`
 
-### 2. **`views.py`**
-- Implements the app's logic for handling user requests.
-- Currently includes a simple `if` condition and `for` loop to process and display movie data.
-- Pulls data from `api.py` and passes it to the frontend.
-
-### 3. **`models.py`**
-- Defines the structure for storing movie data temporarily (e.g., `title`, `genre`, `rating`, etc.).
-
-### 4. **`movie_list.html`**
-- Frontend template that dynamically renders movie data using Django template language.
-- Includes:
-  - A form for selecting a movie genre.
-  - A list that displays movies with their rank, title, and genre.
-
----
-
-## Future Goals
-
-- Enhance the logic in `views.py` to include advanced algorithms for movie similarity:
-  1. **Content-Based Filtering**: Compare movies based on their `overview` and `genre`.
-  2. **Collaborative Filtering**: Leverage user ratings for recommendations.
-  3. **Rank and Popularity Sorting**: Prioritize movies by user ratings and number of votes.
-- Dynamically generate similar movies based on:
-  - Genre
-  - Rank
-  - Plot overview
-
----
-
-## Useful TMDB API Endpoints
-
-1. **Fetch Genre List**:  
-   `https://api.themoviedb.org/3/genre/movie/list`
-
-2. **Discover Movies by Genre**:  
-   `https://api.themoviedb.org/3/discover/movie`
-
-3. **Find Movie Details by ID**:  
-   `https://api.themoviedb.org/3/movie/{movie_id}`
-
-4. **Fetch Similar Movies**:  
-   `https://api.themoviedb.org/3/movie/{movie_id}/similar`
-
----
-
-## Disclaimer
-
-This is a prototype app for demonstration and learning purposes. Further improvements, including deployment and additional features, will be implemented in future iterations.
