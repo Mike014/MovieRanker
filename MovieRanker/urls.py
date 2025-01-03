@@ -21,3 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('movies.urls')),
 ]
+
+# Recap: this file just includes the URL patterns for the admin site and the movies app.

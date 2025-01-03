@@ -40,20 +40,31 @@ def get_movie_lists(genre_id):
         return []
 
 # Example usage
-if __name__ == "__main__":
-    genres = get_genre_lists()
-    if genres:
-        print("Available Genres:")
-        for genre in genres:
-            print(f"ID: {genre['id']}, Name: {genre['name']}")
+# if __name__ == "__main__":
+#     genres = get_genre_lists()
+#     if genres:
+#         print("Available Genres:")
+#         for genre in genres:
+#             print(f"ID: {genre['id']}, Name: {genre['name']}")
 
-        # Choose a genre ID (manual selection or dynamic input)
-        selected_genre_id = input("Enter the genre ID: ")
+#         # Choose a genre ID (manual selection or dynamic input)
+#         selected_genre_id = input("Enter the genre ID: ")
 
-        # Get movies for the selected genre
-        movies = get_movie_lists(selected_genre_id)
-        print("\nTop Movies:")
-        for movie in movies:
-            print(f"Title: {movie['title']}, Rating: {movie['vote_average']}")
-    else:
-        print("No genres available.")
+#         # Get movies for the selected genre
+#         movies = get_movie_lists(selected_genre_id)
+#         print("\nTop Movies:")
+#         for movie in movies:
+#             print(f"Title: {movie['title']}, Rating: {movie['vote_average']}")
+#     else:
+#         print("No genres available.")
+
+# Recap:
+# This Python file contains functions to interact with The Movie Database (TMDB) API. It includes:
+
+# Loading environment variables using dotenv to get the TMDB API key.
+# Function get_genre_lists: Fetches the list of movie genres from TMDB.
+# Function get_movie_lists: Fetches a list of movies for a specific genre from TMDB.
+# Example usage: Demonstrates how to use the above 
+# functions to print available genres and top movies for a selected genre. 
+# The script prints the available genres, prompts the user to enter a genre ID, 
+# and then prints the top movies for that genre.
