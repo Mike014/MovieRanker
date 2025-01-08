@@ -11,13 +11,14 @@ from django.db import models
 # The overview field is a TextField with a default value of an empty string.
 # The release_date field is a DateField that can be null or blank.
 
+
 class Movie(models.Model):
     title = models.CharField(max_length=255)
     genre = models.CharField(max_length=100)
     rating = models.FloatField()
-    overview = models.TextField(default='') 
+    overview = models.TextField(default="")
     release_date = models.DateField(null=True, blank=True)
-    
+
     # title, genre, rating, overview, release_date are the fields of the Movie model.
     def __str__(self):
         return self.title

@@ -8,8 +8,10 @@
 # The movie_details view will render the movie_details.html template with the details of a specific movie.
 
 from django.shortcuts import render
-from .api import get_movie_lists, get_genre_lists, get_movie_details
+
+from .api import get_genre_lists, get_movie_details, get_movie_lists
 from .models import Movie
+
 
 def movie_list(request):
     """
@@ -19,7 +21,7 @@ def movie_list(request):
     print(genres)
 
     # Get the selected genre ID from the query string
-    selected_genre_id = request.GET.get('genre_id', None)
+    selected_genre_id = request.GET.get("genre_id", None)
     if selected_genre_id is not None:
         selected_genre_id = int(selected_genre_id)
     print(selected_genre_id)
@@ -30,22 +32,24 @@ def movie_list(request):
         movies_data = get_movie_lists(selected_genre_id)
         if movies_data:
             for data in movies_data:
-                movies.append({
-                    'id': data.get('id'),  # Use the ID from the API response
-                    'title': data.get('title'),
-                    'genre': selected_genre_id,
-                    'rating': data.get('vote_average'),
-                    'overview': data.get('overview'),
-                    'release_date': data.get('release_date')
-                })
+                movies.append(
+                    {
+                        "id": data.get("id"),  # Use the ID from the API response
+                        "title": data.get("title"),
+                        "genre": selected_genre_id,
+                        "rating": data.get("vote_average"),
+                        "overview": data.get("overview"),
+                        "release_date": data.get("release_date"),
+                    }
+                )
 
     print(movies)
 
-    return render(request, 'movies/movie_list.html', {
-        'movies': movies,
-        'genres': genres,
-        'selected_genre_id': selected_genre_id
-    })
+    return render(
+        request,
+        "movies/movie_list.html",
+        {"movies": movies, "genres": genres, "selected_genre_id": selected_genre_id},
+    )
 
 
 def movie_details(request, movie_id):
@@ -56,14 +60,20 @@ def movie_details(request, movie_id):
     print(movie)
 
     if not movie:
-        return render(request, 'movies/error.html', {
-            'message': 'Could not fetch movie details. Please try again later.'
-        })
+        return render(
+            request,
+            "movies/error.html",
+            {"message": "Could not fetch movie details. Please try again later."},
+        )
 
-    return render(request, 'movies/movie_details.html', {
-        'title': movie.get('title'),
-        'overview': movie.get('overview'),
-        'release_date': movie.get('release_date'),
-        'rating': movie.get('vote_average'),
-        'genres': [genre['name'] for genre in movie.get('genres', [])]
-    })
+    return render(
+        request,
+        "movies/movie_details.html",
+        {
+            "title": movie.get("title"),
+            "overview": movie.get("overview"),
+            "release_date": movie.get("release_date"),
+            "rating": movie.get("vote_average"),
+            "genres": [genre["name"] for genre in movie.get("genres", [])],
+        },
+    )
