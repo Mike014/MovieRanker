@@ -101,9 +101,9 @@ Follow these steps to set up and run **MovieRanker** locally:
         ```bash
         pre-commit run --all-files
         ```
-    
+
     ### Running Tests
-    To run tests, use: 
+    To run tests, use:
     ```bash
     pytest
     ```
@@ -119,22 +119,22 @@ Follow these steps to set up and run **MovieRanker** locally:
 
 ## Useful TMDB API Endpoints
 
-	1. Fetch Genre List:
+1. Fetch Genre List:
     ```bash
     https://api.themoviedb.org/3/genre/movie/list
     ```
 
-    2.	Discover Movies by Genre:
+2.	Discover Movies by Genre:
     ```bash
     https://api.themoviedb.org/3/discover/movie
     ```
 
-    3.	Get Movie Details:
+3.	Get Movie Details:
     ```bash
     https://api.themoviedb.org/3/movie/{movie_id}
     ```
 
-    4.	Fetch Similar Movies:
+4.	Fetch Similar Movies:
     ```bash
     https://api.themoviedb.org/3/movie/{movie_id}/similar
     ```
@@ -157,16 +157,3 @@ Contributions are welcome! Feel free to fork the repository and submit pull requ
 
 Maintainer: Michele Grimaldi
 GitHub: Mike014[Mike014](https://github.com/Mike014)
-
-
-
-
-
-
-
-
-
-
-
-
-    
