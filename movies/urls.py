@@ -10,6 +10,7 @@ from django.urls import path
 from .views import movie_details, movie_list
 
 urlpatterns = [
+    path("", movie_list, name="home"),
     path("movies/", movie_list, name="movie_list"),
     path("movies/<int:movie_id>/", movie_details, name="movie_details"),
 ]
