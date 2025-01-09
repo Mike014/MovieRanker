@@ -69,16 +69,16 @@ class MovieViewsTests(TestCase):
             overview="A mind-bending thriller",
             release_date="2010-07-16",
             affiliate_link="http://example.com",
-            is_sponsored=True
+            is_sponsored=True,
         )
 
     def test_home_view(self):
         """
         Test the home view.
         """
-        response = self.client.get(reverse('home'))
+        response = self.client.get(reverse("home"))
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'movies/home.html')
+        self.assertTemplateUsed(response, "movies/home.html")
         self.assertContains(response, "Welcome to Movie Ranker")
 
     def test_movie_list_view(self):
@@ -116,9 +116,9 @@ class MovieViewsTests(TestCase):
         """
         Test the user profile view.
         """
-        response = self.client.get(reverse('user_profile'))
+        response = self.client.get(reverse("user_profile"))
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'movies/user_profile.html')
+        self.assertTemplateUsed(response, "movies/user_profile.html")
         self.assertContains(response, "User Profile")
 
     def test_subscribe_view(self):
