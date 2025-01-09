@@ -1,0 +1,25 @@
+<!-- Recap: This file is used to define the HTML template for displaying the details of a specific movie.
+     The template will display the title, overview, release date, rating, and genres of the movie.
+     Changes: 31/12/2024
+     In this file, we define the HTML structure for displaying the details of a specific movie.
+     The title of the movie will be displayed as a heading.
+     The overview, release date, rating, and genres of the movie will be displayed as paragraphs.
+     A link to go back to the movie list will be provided at the bottom. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }} - Movie Details</title>
+</head>
+<body>
+    <h1>{{ title }}</h1>
+    <p><strong>Overview:</strong> {{ overview }}</p>
+    <p><strong>Release Date:</strong> {{ release_date }}</p>
+    <p><strong>Rating:</strong> {{ rating }}</p>
+    <p><strong>Genres:</strong> {{ genres|join:", " }}</p>
+
+    <a href="{% url 'movie_list' %}">Back to Movie List</a>
+</body>
+</html>

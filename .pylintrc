@@ -1,0 +1,43 @@
+[MASTER]
+# Minima versione Python
+py-version=3.9
+jobs=1
+ignore=CVS,.venv,venv,migrations,settings
+persistent=yes
+
+[MESSAGES CONTROL]
+# Disabilitiamo i messaggi che spesso non sono utili in Django
+disable=missing-docstring,
+        too-few-public-methods,
+        invalid-name,
+        import-error,
+        too-many-ancestors,
+        too-many-instance-attributes,
+        no-member,
+        too-many-lines
+
+[BASIC]
+argument-naming-style=snake_case
+attr-naming-style=snake_case
+class-naming-style=PascalCase
+const-naming-style=UPPER_CASE
+function-naming-style=snake_case
+method-naming-style=snake_case
+module-naming-style=snake_case
+variable-naming-style=snake_case
+
+[FORMAT]
+max-line-length=100
+indent-string='    '
+expected-line-ending-format=LF
+
+[IMPORTS]
+known-third-party=django
+known-standard-library=numpy
+
+[TYPECHECK]
+ignore-none=yes
+generated-members=settings,objects
+
+[VARIABLES]
+dummy-variables-rgx=_+$|dummy|ignored_
