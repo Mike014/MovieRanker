@@ -1,13 +1,18 @@
-# Recap: This file is used to define functions that interact with The Movie Database API.
-# The functions in this file are used to get the genre list, the list of movies for a specific genre, and the details of a specific movie.
-# The get_genre_lists() function is used to get the genre list. It takes the API key and language as arguments.
-# The get_movie_lists() function is used to get the list of movies for a specific genre. It takes the genre ID, API key, language, sorting, page, and minimum number of votes as arguments.
-# The get_movie_details() function is used to get the details of a specific movie. It takes the movie ID, API key, and language as arguments.
-# Changes: 31/12/2024
-# In this file, we define three functions: one to get the genre list, one to get the list of movies for a specific genre, and one to get the details of a specific movie.
-# The get_genre_lists() function will return a list of genres.
-# The get_movie_lists() function will return a list of movies for a specific genre.
-# The get_movie_details() function will return the details of a specific movie.
+"""
+This module provides functions to interact with The Movie Database (TMDB) API.
+
+Imports:
+    os: Provides a way of using operating system dependent functionality.
+    requests: Allows sending HTTP requests.
+    load_dotenv (dotenv): Loads environment variables from a .env file.
+
+Environment Variables:
+    TMDB_API_KEY: The API key for The Movie Database, loaded from the environment.
+
+Functions:
+    get_genre_lists(): Fetches the list of movie genres from TMDB.
+    get_movie_lists(genre_id): Fetches the list of movies for a specific genre from TMDB.
+"""
 
 import os
 

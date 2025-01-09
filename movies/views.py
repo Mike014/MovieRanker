@@ -1,11 +1,13 @@
-# Recap: This file is used to define the views for the movie app.
-# The views in this file are used to display the list of movies by genre and the details of a specific movie.
-# The movie_list view is used to display the list of movies by genre. It takes the request as an argument.
-# The movie_details view is used to display the details of a specific movie. It takes the request and movie_id as arguments.
-# Changes: 31/12/2024
-# In this file, we define two views: one to display the list of movies by genre and one to display the details of a specific movie.
-# The movie_list view will render the movie_list.html template with the list of movies and genres.
-# The movie_details view will render the movie_details.html template with the details of a specific movie.
+"""
+This module contains the views for the Movies app.
+
+Imports:
+    render (django.shortcuts.render): A function to render templates with context.
+    get_movie_details (movies.utils.get_movie_details): A utility function to fetch movie details from an external API.
+
+Functions:
+    movie_details(request, movie_id): View to display the details of a specific movie, including its overview.
+"""
 
 from django.shortcuts import render
 
@@ -52,9 +54,19 @@ def movie_list(request):
     )
 
 
+from .utils import get_movie_details
+
+
 def movie_details(request, movie_id):
     """
     View to display the details of a specific movie, including its overview.
+
+    Args:
+        request (HttpRequest): The request object.
+        movie_id (int): The ID of the movie to fetch details for.
+
+    Returns:
+        HttpResponse: The response object with the rendered template.
     """
     movie = get_movie_details(movie_id)
     print(movie)
