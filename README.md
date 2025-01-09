@@ -145,6 +145,10 @@ Follow these steps to set up and run **MovieRanker** locally:
     https://api.themoviedb.org/3/movie/{movie_id}/similar
     ```
 
+## Documentation
+
+The documentation for MovieRanker is available at: [MovieRanker Documentation](https://Mike014.github.io/MovieRanker/)
+
 ## Future Goals
 
 - Implement content-based and collaborative filtering for advanced movie recommendations.
