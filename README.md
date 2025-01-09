@@ -117,6 +117,12 @@ Follow these steps to set up and run **MovieRanker** locally:
     **GitHub Actions**
     The project includes a GitHub Actions workflow for automated testing and linting. The configuration is in .github/workflows/lint-and-test.yml.
 
+    **Running Django Tests**
+    To run Django tests for the Movies app and discover any bugs, you can use the following command:
+    ```bash
+     python manage.py test movies
+    ```
+
 ## Useful TMDB API Endpoints
 
 1. Fetch Genre List:
