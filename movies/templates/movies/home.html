@@ -3,13 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movie Ranker</title>
+    <title>Home - Movie Ranker</title>
 </head>
 <body>
-    <h1>Top Movies</h1>
+    <h1>Welcome to Movie Ranker</h1>
+
+    <!-- Navigation Links -->
+    <nav>
+        <ul>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'user_profile' %}">User Profile</a></li>
+            <li><a href="{% url 'subscribe' %}">Subscribe</a></li>
+        </ul>
+    </nav>
 
     <!-- Form for selecting the genre -->
-    <form method="get" action="{% url 'movie_list' %}">
+    <form method="get" action="{% url 'home' %}">
         <label for="genre">Choose a genre:</label>
         <select name="genre_id" id="genre">
             {% for genre in genres %}
@@ -62,10 +71,3 @@
     </div>
 </body>
 </html>
-
-<!-- 
-This HTML file represents the main page for viewing movies filtered by genre. 
-It includes a form for selecting the genre, a list of filtered movies, a section for sponsored movies, 
-and an ad banner that changes based on the selected genre. 
-If there are no movies for the selected genre, an appropriate message is displayed.
--->
