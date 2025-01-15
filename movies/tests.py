@@ -8,9 +8,11 @@ Imports:
     Client (django.test.Client): A class to simulate a user interacting with the code at the view level.
 """
 
-from django.test import TestCase, Client
-from django.urls import reverse
 from unittest.mock import patch
+
+from django.test import Client, TestCase
+from django.urls import reverse
+
 from .models import Movie
 
 

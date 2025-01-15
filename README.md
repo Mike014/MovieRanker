@@ -145,6 +145,43 @@ Follow these steps to set up and run **MovieRanker** locally:
     https://api.themoviedb.org/3/movie/{movie_id}/similar
     ```
 
+## Back-End Database with PostgreSQL
+
+### Install and Configure Docker
+
+1. **Install Docker**:
+   - Visit [Docker Desktop](https://www.docker.com/) and download the version for your operating system (Windows, macOS, Linux).
+   - Follow the installation instructions.
+
+2. **Start a PostgreSQL Container**:
+   ```bash
+   docker run --name postgres -e POSTGRES_PASSWORD=your_password_here -d -p 5432:5432 postgres
+   ```
+
+3. **Verify the PostgreSQL Container is Running:**:
+   ```bash
+   docker ps
+   ```
+
+   - Displays all active containers.
+
+4. **Test Database Connection:**:
+   ```bash
+   docker ps
+   ```
+
+   OR
+    
+   ```bash
+   python manage.py dbshell
+   ```bash
+
+   - Perform Database Migrations
+   ```bash
+   python manage.py makemigrations
+   python manage.py migrate
+   ```
+
 ## Documentation
 
 - The documentation for MovieRanker is available at: [MovieRanker Documentation](https://Mike014.github.io/MovieRanker/)
