@@ -174,7 +174,7 @@ Follow these steps to set up and run **MovieRanker** locally:
     
    ```bash
    python manage.py dbshell
-   ```bash
+   ```
 
    - Perform Database Migrations
    ```bash
