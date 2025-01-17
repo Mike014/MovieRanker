@@ -194,8 +194,9 @@ movies/
 ```
 - To run the command, use:
  ```bash
- python manage.py query_movies
+ ython manage.py query_movies --type all
  ```
+- Check in the **query_mvovies.py** which command you can use for querying the database
 
 ## Documentation
 
