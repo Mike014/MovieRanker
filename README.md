@@ -182,6 +182,21 @@ Follow these steps to set up and run **MovieRanker** locally:
    python manage.py migrate
    ```
 
+## Querying the Database
+- First i have created a Custom Management Command:
+```plaintext
+movies/
+    management/
+        __init__.py
+        commands/
+            __init__.py
+            query_movies.py
+```
+- To run the command, use:
+ ```bash
+ python manage.py query_movies
+ ```
+
 ## Documentation
 
 - The documentation for MovieRanker is available at: [MovieRanker Documentation](https://Mike014.github.io/MovieRanker/)
