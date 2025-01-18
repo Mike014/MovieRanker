@@ -148,13 +148,18 @@ Follow these steps to set up and run **MovieRanker** locally:
 ## Documentation
 
 - The documentation for MovieRanker is available at: [MovieRanker Documentation](https://Mike014.github.io/MovieRanker/)
-- Created a new requirements.txt file, into movie_ranker/ with command:
+- Created a new requirements.txt file with command:
 
 ```bash
 pip install pipreqs
 pipreqs .
 ```
-
+- created docker file, you can buld the image with this command:
+```bash
+docker build . -t movies:latest && docker run -e PYTHONUNBUFFERED=1 -p 8000:8000 movies
+```
+- Go to [Link](http://localhost:8000/movies/)
+  
 ## Future Goals
 
 - Implement content-based and collaborative filtering for advanced movie recommendations.
