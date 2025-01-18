@@ -147,8 +147,8 @@ Follow these steps to set up and run **MovieRanker** locally:
 
 ## Documentation
 
-The documentation for MovieRanker is available at: [MovieRanker Documentation](https://Mike014.github.io/MovieRanker/)
-Created a new requirements.txt file, into movie_ranker/ with command:
+- The documentation for MovieRanker is available at: [MovieRanker Documentation](https://Mike014.github.io/MovieRanker/)
+- Created a new requirements.txt file, into movie_ranker/ with command:
 
 ```bash
 pip install pipreqs
