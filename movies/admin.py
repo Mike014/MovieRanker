@@ -15,4 +15,16 @@ from django.contrib import admin
 from .models import Movie
 
 # Register your models here.
-admin.site.register(Movie)
+class MovieAdmin(admin.ModelAdmin):
+    list_display = ('title', 'genre', 'rating', 'release_date', 'is_sponsored')
+    list_filter = ('genre', 'rating', 'release_date', 'is_sponsored')
+    search_fields = ('title', 'genre')
+    ordering = ('-release_date',)
+
+    actions = ['mark_as_sponsored']
+
+    def mark_as_sponsored(self, request, queryset):
+        queryset.update(is_sponsored=True)
+    mark_as_sponsored.short_description = "Mark selected movies as sponsored"
+
+admin.site.register(Movie, MovieAdmin)
