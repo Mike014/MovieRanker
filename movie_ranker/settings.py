@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-5dyf_vug_z&&l_@r6@#6k=j5(5_zpz=t!hjet-l#lryyhj&li@"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["0.0.0.0", "127.0.0.1", "localhost"]
 
@@ -56,7 +56,7 @@ ROOT_URLCONF = "movie_ranker.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [os.path.join(BASE_DIR, "movies", "templates", "movies")],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [

@@ -1,17 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Profile - Movie Ranker</title>
-</head>
-<body>
-    <h1>User Profile</h1>
-    <p>Welcome, {{ user.username }}!</p>
+{% extends "base.html" %}
 
-    <!-- Display user information if authenticated -->
+{% block title %}User Profile - Movie Ranker{% endblock %}
+
+{% block content %}
+    <h1>User Profile</h1>
     {% if user.is_authenticated %}
-    <p>Username: {{ user.username }}, First name: {{ user.first_name }}, Last name: {{ user.last_name }}</p>
+        <p>Welcome, {{ user.username }}!</p>
+        <p>Username: {{ user.username }}, First name: {{ user.first_name }}, Last name: {{ user.last_name }}</p>
+    {% else %}
+        <p>Please log in to access your account.</p>
     {% endif %}
 
     <!-- Navigation Links -->
@@ -33,7 +30,5 @@
         {% csrf_token %}
         <button type="submit">Subscribe to Premium</button>
     </form> -->
-</body>
-</html>
-
+{% endblock %}
 

@@ -177,7 +177,7 @@ class HomeView(View):
                     movies.append(movie)
 
         if not request.user.is_authenticated:
-            movies = movies[:5]
+            movies = movies[:3]
 
         sponsored_movies = Movie.objects.filter(is_sponsored=True)
 

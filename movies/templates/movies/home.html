@@ -1,73 +1,71 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - Movie Ranker</title>
-</head>
-<body>
-    <h1>Welcome to Movie Ranker</h1>
+{% extends "base.html" %}
 
-    <!-- Navigation Links -->
-    <nav>
-        <ul>
-            <li><a href="{% url 'home' %}">Home</a></li>
-            <li><a href="{% url 'user_profile' %}">User Profile</a></li>
-            <li><a href="{% url 'subscribe' %}">Subscribe</a></li>
-        </ul>
-    </nav>
+{% block title %}Home - Movie Ranker{% endblock %}
 
-    <!-- Form for selecting the genre -->
-    <form method="get" action="{% url 'home' %}">
-        <label for="genre">Choose a genre:</label>
-        <select name="genre_id" id="genre">
+{% block content %}
+<h1>Welcome to Movie Ranker</h1>
+
+<!-- Form for selecting the genre -->
+<form method="get" action="{% url 'home' %}" class="mt-4">
+    <div class="mb-3">
+        <label for="genre" class="form-label">Select Genre:</label>
+        <select id="genre" name="genre_id" class="form-select">
             {% for genre in genres %}
-                <option value="{{ genre.id }}" {% if genre.id == selected_genre_id %}selected{% endif %}>
-                    {{ genre.name }}
-                </option>
+            <option value="{{ genre.id }}" {% if genre.id == selected_genre_id %}selected{% endif %}>{{ genre.name }}</option>
             {% endfor %}
         </select>
-        <button type="submit">Filter</button>
-    </form>
-
-    <!-- Show the filtered movies -->
-    <ul>
-        {% for movie in movies %}
-            <li>
-                <h2><a href="{% url 'movie_details' movie.id %}">{{ movie.title }}</a></h2>
-                <p>Rating: {{ movie.rating }}</p>
-                <p>Release Date: {{ movie.release_date }}</p>
-                <!-- Show the movie affiliate link -->
-                {% if movie.affiliate_link %}
-                    <a href="{{ movie.affiliate_link }}" target="_blank">Watch Now</a>
-                {% endif %}
-            </li>
-        {% empty %}
-            <p>No movies found for the selected genre.</p>
-        {% endfor %}
-    </ul>
-
-    <!-- Sponsored movies -->
-    <h2>Sponsored Movies</h2>
-    <ul>
-        {% for movie in sponsored_movies %}
-            <li>{{ movie.title }} (Genre: {{ movie.genre }})</li>
-        {% endfor %}
-    </ul>
-
-    <!-- Adding banner for ads -->
-    <div class="ad-banner">
-        {% if selected_genre_id %}
-            {% if selected_genre_id == 28 %} <!-- Assuming 28 is the ID for Action -->
-                <img src="/static/ads/action_ad.jpg" alt="Action Movies Ad">
-            {% elif selected_genre_id == 35 %} <!-- Assuming 35 is the ID for Comedy -->
-                <img src="/static/ads/comedy_ad.jpg" alt="Comedy Movies Ad">
-            {% else %}
-                <img src="/static/ads/default_ad.jpg" alt="Default Ad">
-            {% endif %}
-        {% else %}
-            <img src="/static/ads/default_ad.jpg" alt="Default Ad">
-        {% endif %}
     </div>
-</body>
-</html>
+    <button type="submit" class="btn btn-primary">Filter</button>
+</form>
+
+<!-- Display movies -->
+<div class="row mt-4">
+    {% for movie in movies %}
+    <div class="col-md-4">
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title">{{ movie.title }}
+                    <h2><a href="{% url 'movie_details' movie.id %}">{{ movie.title }}</a></h2>
+                </h5>
+                <p class="card-text">{{ movie.overview }}</p>
+                {% if movie.affiliate_link %}
+                <a href="{{ movie.affiliate_link }}" target="_blank" class="btn btn-primary">Watch Now</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <p class="text-muted">No movies found for the selected genre.</p>
+    {% endfor %}
+</div>
+
+<!-- Sponsored movies -->
+<h2>Sponsored Movies</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Genre</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for movie in sponsored_movies %}
+        <tr>
+            <td>{{ movie.title }}</td>
+            <td>{{ movie.genre }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<!-- Adding banner for ads -->
+<div class="ad-banner mt-4">
+    {% if selected_genre_id %}
+    {% if selected_genre_id == 28 %}
+    <img src="/static/ads/action_ad.jpg" class="img-fluid" alt="Action Movies Ad">
+    {% elif selected_genre_id == 35 %}
+    <img src="/static/ads/comedy_ad.jpg" class="img-fluid" alt="Comedy Movies Ad">
+    {% endif %}
+    {% endif %}
+</div>
+{% endblock %}
