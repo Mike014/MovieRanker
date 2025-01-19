@@ -20,11 +20,12 @@ Classes:
     HomeView(View): View to display the home page.
 """
 
-from django.views import View
 from django.shortcuts import redirect, render
+from django.views import View
 
 from .api import get_genre_lists, get_movie_details, get_movie_lists
 from .models import Movie
+
 
 class MovieListView(View):
     def get(self, request):
@@ -48,7 +49,7 @@ class MovieListView(View):
             if movies_data:
                 for data in movies_data:
                     movie = Movie(
-                        id=data.get("id"),  
+                        id=data.get("id"),
                         title=data.get("title"),
                         genre=selected_genre_id,
                         rating=data.get("vote_average"),
@@ -61,7 +62,10 @@ class MovieListView(View):
         if not request.user.is_authenticated:
             movies = movies[:5]
 
-        return render(request, "movies/movie_list.html", {"movies": movies, "genres": genres})
+        return render(
+            request, "movies/movie_list.html", {"movies": movies, "genres": genres}
+        )
+
 
 class MovieDetailView(View):
     def get(self, request, movie_id):
@@ -97,6 +101,7 @@ class MovieDetailView(View):
             },
         )
 
+
 class UserProfileView(View):
     def get(self, request):
         """
@@ -109,7 +114,8 @@ class UserProfileView(View):
             HttpResponse: The response object with the rendered template.
         """
         return render(request, "movies/user_profile.html")
-    
+
+
 class SubscribeView(View):
     def post(self, request):
         """
@@ -135,6 +141,7 @@ class SubscribeView(View):
         """
         return render(request, "movies/subscribe.html")
 
+
 class HomeView(View):
     def get(self, request):
         """
@@ -157,7 +164,7 @@ class HomeView(View):
             if movies_data:
                 for data in movies_data:
                     movie = Movie(
-                        id=data.get("id"),  
+                        id=data.get("id"),
                         title=data.get("title"),
                         genre=selected_genre_id,
                         rating=data.get("vote_average"),
@@ -182,11 +189,3 @@ class HomeView(View):
                 "sponsored_movies": sponsored_movies,
             },
         )
-
-
-
-
-
-
-
-

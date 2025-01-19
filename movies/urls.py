@@ -17,29 +17,22 @@ URL Patterns:
 """
 
 from django.urls import path
-from .views import MovieListView, MovieDetailView, SubscribeView, UserProfileView, HomeView
+
+from .views import (
+    HomeView,
+    MovieDetailView,
+    MovieListView,
+    SubscribeView,
+    UserProfileView,
+)
 
 urlpatterns = [
-    path("", HomeView.as_view(), name="home"), 
+    path("", HomeView.as_view(), name="home"),
     path("movies/", MovieListView.as_view(), name="movie_list"),
     path("movies/<int:movie_id>/", MovieDetailView.as_view(), name="movie_details"),
     path("profile/", UserProfileView.as_view(), name="user_profile"),
     path("subscribe/", SubscribeView.as_view(), name="subscribe"),
 ]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 # Old code

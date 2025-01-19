@@ -84,13 +84,13 @@ WSGI_APPLICATION = "movie_ranker.wsgi.application"
 
 # PostgreSQL database
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': 'vZDPLXFabnsSVjlhRUFysOZt',
-        'HOST': 'postgres',
-        'PORT': '5432',
+    "default": {
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        "NAME": "postgres",
+        "USER": "postgres",
+        "PASSWORD": "vZDPLXFabnsSVjlhRUFysOZt",
+        "HOST": "postgres",
+        "PORT": "5432",
     }
 }
 

@@ -18,6 +18,7 @@ Functions:
 """
 
 from django.core.management.base import BaseCommand
+
 from movies.models import Movie
 
 
