@@ -24,6 +24,8 @@ from .views import (
     MovieListView,
     SubscribeView,
     UserProfileView,
+    LoginView,
+    LogoutView,
 )
 
 urlpatterns = [
@@ -32,6 +34,8 @@ urlpatterns = [
     path("movies/<int:movie_id>/", MovieDetailView.as_view(), name="movie_details"),
     path("profile/", UserProfileView.as_view(), name="user_profile"),
     path("subscribe/", SubscribeView.as_view(), name="subscribe"),
+    path("login/", LoginView.as_view(), name="login"),
+    path("logout/", LogoutView.as_view(), name="logout"),
 ]
 
 

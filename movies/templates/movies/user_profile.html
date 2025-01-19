@@ -9,28 +9,31 @@
     <h1>User Profile</h1>
     <p>Welcome, {{ user.username }}!</p>
 
+    <!-- Display user information if authenticated -->
+    {% if user.is_authenticated %}
+    <p>Username: {{ user.username }}, First name: {{ user.first_name }}, Last name: {{ user.last_name }}</p>
+    {% endif %}
+
     <!-- Navigation Links -->
     <nav>
         <ul>
             <li><a href="{% url 'home' %}">Home</a></li>
             <li><a href="{% url 'subscribe' %}">Subscribe</a></li>
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+            {% else %}
+            <li><a href="{% url 'login' %}">Login</a></li>
+            {% endif %}
         </ul>
     </nav>
 
-    <h2>Premium Subscription</h2>
+    <!-- <h2>Premium Subscription</h2>
     <p>Upgrade to premium to unlock advanced features and unlimited access to movies.</p>
     <form method="post" action="{% url 'subscribe' %}">
         {% csrf_token %}
         <button type="submit">Subscribe to Premium</button>
-    </form>
+    </form> -->
 </body>
 </html>
 
-<!-- Recap:
-This HTML file represents the user profile page for the Movie Ranker application. It includes:
 
-A welcome message displaying the username of the logged-in user.
-A section promoting the premium subscription, highlighting the benefits of upgrading to premium.
-A form that allows the user to subscribe to the premium service.
-The form uses the POST method and includes a CSRF token for security.
-When the form is submitted, it triggers the subscribe view. -->

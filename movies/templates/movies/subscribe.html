@@ -3,33 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Subscribe - Movie Ranker</title>
+    <title>Login - Movie Ranker</title>
 </head>
 <body>
-    <h1>Subscribe to Premium</h1>
-    <p>Upgrade to premium to unlock advanced features and unlimited access to movies.</p>
+    <h1>Login</h1>
+    <p>Please log in to access your account.</p>
 
     <!-- Navigation Links -->
-    <nav>
+    <!-- <nav>
         <ul>
             <li><a href="{% url 'home' %}">Home</a></li>
             <li><a href="{% url 'user_profile' %}">User Profile</a></li>
         </ul>
-    </nav>
+    </nav> -->
 
     <form method="post" action="{% url 'subscribe' %}">
         {% csrf_token %}
-        <button type="submit">Subscribe Now</button>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        <br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <br>
+        <button type="submit">Login</button>
     </form>
 </body>
 </html>
-
-<!-- Recap:
-This HTML file represents the subscription page for the Movie Ranker application. It includes:
-
-A title and heading indicating that this is the subscription page.
-A paragraph explaining the benefits of upgrading to a premium subscription,
-such as unlocking advanced features and unlimited access to movies.
-A form that allows the user to subscribe to the premium service.
-The form uses the POST method and includes a CSRF token for security.
-When the form is submitted, it triggers the subscribe view. -->
