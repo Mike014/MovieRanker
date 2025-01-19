@@ -19,6 +19,7 @@ Classes:
     SubscribeView(View): View to handle user subscriptions.
     HomeView(View): View to display the home page.
 """
+
 from django.contrib.auth import authenticate, login
 from django.shortcuts import redirect, render
 from django.views import View
@@ -30,7 +31,7 @@ from .models import Movie
 class MovieListView(View):
     def get(self, request):
         if not request.user.is_authenticated:
-            return redirect('subscribe')
+            return redirect("subscribe")
         """
         View to display a list of movies filtered by genre.
 
@@ -72,7 +73,7 @@ class MovieListView(View):
 class MovieDetailView(View):
     def get(self, request, movie_id):
         if not request.user.is_authenticated:
-            return redirect('subscribe')
+            return redirect("subscribe")
         """
         View to display the details of a specific movie, including its overview.
 
@@ -119,6 +120,7 @@ class UserProfileView(View):
         """
         return render(request, "movies/user_profile.html")
 
+
 class SubscribeView(View):
     def get(self, request):
         """
@@ -133,19 +135,22 @@ class SubscribeView(View):
         return render(request, "movies/subscribe.html")
 
     def post(self, request):
-        username = request.POST.get('username')
-        password = request.POST.get('password')
+        username = request.POST.get("username")
+        password = request.POST.get("password")
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('home')
+            return redirect("home")
         else:
-            return render(request, 'movies/subscribe.html', {'error': 'Invalid credentials'})
+            return render(
+                request, "movies/subscribe.html", {"error": "Invalid credentials"}
+            )
+
 
 class HomeView(View):
     def get(self, request):
         if not request.user.is_authenticated:
-            return redirect('subscribe')
+            return redirect("subscribe")
         """
         View to display the home page with a list of movies.
 
@@ -192,12 +197,14 @@ class HomeView(View):
             },
         )
 
+
 class LoginView(View):
     def get(self, request):
         return render(request, "movies/subscribe.html")
 
     def post(self, request):
         return redirect("home")
+
 
 class LogoutView(View):
     def get(self, request):

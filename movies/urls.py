@@ -18,15 +18,8 @@ URL Patterns:
 
 from django.urls import path
 
-from .views import (
-    HomeView,
-    MovieDetailView,
-    MovieListView,
-    SubscribeView,
-    UserProfileView,
-    LoginView,
-    LogoutView,
-)
+from .views import (HomeView, LoginView, LogoutView, MovieDetailView,
+                    MovieListView, SubscribeView, UserProfileView)
 
 urlpatterns = [
     path("", HomeView.as_view(), name="home"),
